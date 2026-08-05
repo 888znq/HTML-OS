@@ -1,0 +1,6 @@
+{
+  "appId": "com.webtop.os",
+  "appName": "WebtopOS",
+  "webDir": "public",
+  "bundledWebRuntime": false
+}

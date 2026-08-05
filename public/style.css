@@ -1,0 +1,62 @@
+body, html { margin: 0; overflow: hidden; font-family: 'Segoe UI', Tahoma, sans-serif; background: #000432; color: white; user-select: none; touch-action: none; }
+
+#desktop { position: relative; width: 100vw; height: calc(100vh - 50px); overflow: hidden; }
+#taskbar { height: 50px; background: rgba(15, 23, 42, 0.95); display: flex; align-items: center; padding: 0 10px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+.sys-btn { padding: 6px 10px; background: rgba(255,255,255,0.1); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 13px; transition: 0.2s; }
+.sys-btn:hover { background: rgba(255,255,255,0.2); }
+
+#taskbar-apps { display: flex; gap: 4px; flex: 1; overflow-x: auto; align-items: center; }
+.taskbar-item { padding: 4px 8px; background: rgba(255,255,255,0.05); border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s; border-bottom: 2px solid transparent; height: 32px; max-width: 120px; box-sizing: border-box; }
+.taskbar-item.running { border-bottom: 2px solid #888; background: rgba(255,255,255,0.1); }
+.taskbar-item.active { border-bottom: 2px solid #0078D7; background: rgba(255,255,255,0.25); }
+.taskbar-item img, .desktop-icon img { width: 16px; height: 16px; border-radius: 2px; object-fit: cover; flex-shrink: 0; }
+.taskbar-item span { font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.taskbar-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+#sys-clock { text-align: right; font-size: 11px; cursor: default; line-height: 1.2; padding: 0 4px; }
+
+.desktop-icon { position: absolute; width: 75px; height: 75px; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: grab; border: 1px solid transparent; font-size: 11px; padding: 4px; box-sizing: border-box; }
+.desktop-icon img { width: 28px; height: 28px; margin-bottom: 4px; }
+.desktop-icon span { width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: rgba(0,0,0,0.4); border-radius: 2px; padding: 2px; }
+
+/* Android uses iframe instead of webview tag */
+.app-window { position: absolute; background: #fff; color: black; border-radius: 8px; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #555; overflow: hidden; box-sizing: border-box; }
+.window-header { height: 32px; background: #f3f3f3; display: flex; justify-content: space-between; align-items: center; padding-left: 10px; cursor: default; touch-action: none; }
+.window-header .title { font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 8px; flex: 1; height: 100%; pointer-events: none;}
+.window-content { flex: 1; display: flex; flex-direction: column; background: #fff; position: relative; } 
+iframe { flex: 1; border: none; width: 100%; height: 100%; }
+
+.browser-bar { display: flex; padding: 6px 10px; background: #e6e6e6; border-bottom: 1px solid #ccc; gap: 6px; align-items: center; }
+.browser-bar button { padding: 4px 10px; cursor: pointer; border: 1px solid #ccc; background: #fff; border-radius: 4px; font-size: 12px; color: #333; }
+.browser-bar input { flex: 1; padding: 6px 10px; border-radius: 15px; border: 1px solid #bbb; outline: none; font-size: 13px; }
+
+.controls { display: flex; height: 100%; }
+.controls button { border: none; background: transparent; width: 46px; height: 100%; cursor: pointer; font-size: 12px; color: #333; }
+.controls .btn-close:active { background: #e81123 !important; color: white; }
+
+.max-container { position: relative; display: flex; height: 100%; }
+.snap-menu { display: none; position: absolute; top: 100%; left: -50px; background: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 100; flex-wrap: wrap; width: 140px; gap: 8px; justify-content: center; }
+.max-container:hover .snap-menu, .max-container:active .snap-menu { display: flex; } 
+
+.snap-icon { width: 30px; height: 30px; border: 2px solid #888; cursor: pointer; border-radius: 4px; box-sizing: border-box; }
+.snap-full { background: #0078D7; }
+.snap-left { background: linear-gradient(to right, #0078D7 50%, #ddd 50%); }
+.snap-right { background: linear-gradient(to right, #ddd 50%, #0078D7 50%); }
+.snap-top { background: linear-gradient(to bottom, #0078D7 50%, #ddd 50%); }
+.snap-bottom { background: linear-gradient(to bottom, #ddd 50%, #0078D7 50%); }
+
+.resizer { position: absolute; z-index: 20; }
+.resizer.n { top: 0; left: 5px; right: 5px; height: 15px; cursor: n-resize; }
+.resizer.s { bottom: 0; left: 5px; right: 5px; height: 15px; cursor: s-resize; }
+.resizer.e { top: 5px; bottom: 5px; right: 0; width: 15px; cursor: e-resize; }
+.resizer.w { top: 5px; bottom: 5px; left: 0; width: 15px; cursor: w-resize; }
+
+.hidden { display: none !important; }
+#add-modal, #workspace-modal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1e1e1e; padding: 25px; border-radius: 8px; z-index: 999; border: 1px solid #444; width: 80%; max-width: 400px; }
+.modal-section { margin-bottom: 15px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 4px; }
+.modal-section label { font-size: 12px; color: #aaa; display: block; margin-bottom: 5px; }
+input { width: 100%; padding: 8px; background: #333; border: 1px solid #555; color: white; border-radius: 4px; box-sizing: border-box; }
+button.primary-btn { padding: 8px 16px; background: #0078D7; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+#context-menu { position: absolute; background: #fff; color: #333; border: 1px solid #ccc; padding: 5px 0; border-radius: 4px; z-index: 9999; width: 150px; }
+#delete-app-btn { padding: 8px 15px; cursor: pointer; font-size: 14px; }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="style.css">
+  <title>Custom OS</title>
+</head>
+<body>
+  <div id="desktop"></div>
+
+  <!-- Taskbar -->
+  <div id="taskbar">
+    <div id="taskbar-apps"></div>
+    <div class="taskbar-right">
+      <button id="combine-btn" class="sys-btn" title="Save Layout">⊞ Combine</button>
+      <button id="add-app-btn" class="sys-btn" title="Add App">+</button>
+      <div id="sys-clock">
+        <div id="clock-time">--:--</div>
+        <div id="clock-date">--/--/----</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add App Modal -->
+  <div id="add-modal" class="hidden">
+    <h3>Add Web App</h3>
+    <div class="modal-section">
+      <label>App Name</label>
+      <input type="text" id="app-name" placeholder="App Name (e.g., YouTube)">
+    </div>
+    <div class="modal-section">
+      <label>Direct URL (https://...)</label>
+      <input type="text" id="app-url" placeholder="https://...">
+    </div>
+    <div class="modal-actions">
+      <button id="save-app" class="primary-btn">Pin App</button>
+      <button id="close-modal">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Workspace Naming Modal -->
+  <div id="workspace-modal" class="hidden">
+    <h3>Save Split Workspace</h3>
+    <div class="modal-section">
+      <label>Name your combined layout:</label>
+      <input type="text" id="workspace-name" placeholder="e.g., Media Workspace">
+    </div>
+    <div class="modal-actions">
+      <button id="save-workspace-btn" class="primary-btn">Save Layout</button>
+      <button id="close-workspace-modal">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Context Menu -->
+  <div id="context-menu" class="hidden">
+    <div id="delete-app-btn">Unpin & Delete</div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

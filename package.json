@@ -1,0 +1,15 @@
+{
+  "name": "android-webtop",
+  "version": "1.0.0",
+  "description": "HTML Desktop Environment for Android",
+  "scripts": {
+    "build": "echo 'No bundler needed, files are in public/'"
+  },
+  "dependencies": {
+    "@capacitor/android": "^5.7.0",
+    "@capacitor/core": "^5.7.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.7.0"
+  }
+}
