@@ -1,9 +1,12 @@
 {
-  "name": "android-webtop",
+  "name": "html-os",
   "version": "1.0.0",
   "description": "HTML Desktop Environment for Android",
   "scripts": {
-    "build": "echo 'No bundler needed, files are in public/'"
+    "build": "echo 'No bundler needed, files are in public/'",
+    "android:add": "cap add android",
+    "android:sync": "cap sync android",
+    "android:open": "cap open android"
   },
   "dependencies": {
     "@capacitor/android": "^5.7.0",
